@@ -26,15 +26,15 @@ INSERT INTO "user" (username) VALUES
 -- Insert dummy posts
 INSERT INTO post (title, user_id) VALUES
 ('My first blog post', 1),
-('Travel adventures', 2),
+('Travel adventures', NULL),
 ('Cooking recipes', 3),
 ('Tech review: New smartphone', 1),
 ('Gardening tips', 4),
-('Book recommendations', 2),
+('Book recommendations', NULL),
 ('Fitness journey', 5),
 ('DIY home projects', 4),
 ('Movie reviews', 5),
-('Career advice', 3);
+('Career advice', NULL);
 
 
 Drop table "user";
@@ -47,4 +47,19 @@ select * from post
 -- When delete a user the corresponding posts will be deleted also.
 Delete from "user"
     where id = 1;
-    
+
+-- Inner Join
+select title, username from post
+join "user" on post.user_id = "user".id;
+
+-- Left Join
+select * from post
+left join "user" on post.user_id = "user".id;
+
+-- Right Join
+select * from post
+Right join "user" on post.user_id = "user".id;
+
+
+select * from post
+FULL join "user" on post.user_id = "user".id;
